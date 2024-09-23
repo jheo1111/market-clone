@@ -41,4 +41,11 @@ async def get_items():
 
 @app.get('/images/{item_id}')
 async def get_image(item_id):
-    cur =
+    cur = con.cursor()
+    image_bytes = cur.execute(f"""
+                              SELECT image from items WHERE id={item_id}
+                              """).fetchone()[0]
+    
+    return Response(content=bytes.fromhex(image_bytes))
+
+app.mount("/", StaticFiles(directory="frontend", html=True), name="frontend")
