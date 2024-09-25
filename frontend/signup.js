@@ -29,10 +29,10 @@ const handleSubmit = async (event) => {
             alert("회원 가입에 성공했습니다.")
             window.location.pathname = "/login.html";
         }
-    } else {
+      } else {
         div.innerText = "비밀번호가 같지 않습니다.";
         div.style.color = "red";
-    }
+      }
 }; 
 
 form.addEventListener("submit", handleSubmit); 
